@@ -38,6 +38,11 @@ a:hover {
   font-size: 24px;
 }
 
+.site-title a:hover {
+  color: #ffffff;
+  background-color: #1a1979; 
+}
+
 .site-nav a {
   margin-left: 20px;
 }
