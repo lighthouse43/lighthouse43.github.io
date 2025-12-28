@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  <!-- <script src="https://kit.fontawesome.com/1c285cdea4.js" crossorigin="anonymous"></script> -->
+  <link rel="icon" href="{{ '/assets/imgs/icon.png' | relative_url }}" type="image/png">
+  <link rel="shortcut icon" type="image/png" href="{{ '/assets/imgs/icon.png' | relative_url }}">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VK5ECSXWXC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VK5ECSXWXC');
+  </script>
+
+  <!-- Page-specific styles for links/share pages -->
+  {% if page.permalink == '/links/' or page.permalink == '/share/' %}
+  <style>
+    body.page-links .page-content {
+      max-width: 480px;
+      margin: 40px auto;
+      text-align: center;
+    }
+    body.page-links .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    body.page-links h1,
+    body.page-links p.bio {
+      text-align: center;
+    }
+
+    /* Linktree-style top social icons */
+    body.page-links .social-links a {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      border: 2px solid #ddd;
+      color: #646464;
+      transition: 0.2s;
+      margin: 0 6px;
+    }
+    body.page-links .social-links a:hover {
+      border-color: #888;
+      transform: translateY(-2px);
+      color: #f5f5f5;
+    }
+
+    /* Square links/buttons */
+    body.page-links .link {
+      display: block;
+      padding: 14px 18px;
+      margin: 12px 0;
+      background: white;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      border: 2px solid #ddd;
+      transition: 0.2s;
+    }
+    body.page-links .link:hover {
+      border-color: #888;
+      transform: translateY(-2px);
+    }
+
+    /* Hide footer social links on links page */
+    body.page-links .site-footer .social-links {
+      display: none;
+    }
+  </style>
+  {% endif %}
+</head>
+
+{% assign body_class = "" %}
+{% if page.permalink == '/links/' or page.permalink == '/share/' %}
+  {% assign body_class = "page-links" %}
+{% endif %}
+
+<body class="{{ body_class }}">
+<header class="site-header">
+  <div class="header-wrapper">
+    <h1 class="site-title">
+      <a href="{{ '/' | relative_url }}">Gatehouse Docks</a>
+    </h1>
+    <nav class="site-nav">
+      <a href="{{ '/bylaws/' | relative_url }}">Bylaws</a>
+
+      {% unless page.permalink == '/links/' %}
+        <a href="{{ '/rules/' | relative_url }}">Rules</a>
+      {% endunless %}
+    </nav>
+  </div>
+</header>
+
+<main class="page-content">
+  {{ content }}
+</main>
+
+<footer class="site-footer">
+  <span>&copy; 2025 Gatehouse Dock Condominimum Association, Inc.</span> &nbsp;|&nbsp;
+  <span><a href="mailto:gatehousedocks@gmail.com">gatehousedocks [at] gmail [dot] com</a></span> &nbsp;|&nbsp;
+</footer>
+
+</body>
+</html>
